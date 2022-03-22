@@ -49,4 +49,16 @@ describe('local-bookstore-backend routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('gets authors by id', async () => {
+    const expected = {
+      id: '1',
+      name: 'Hayao Miyazaki',
+      dob: '1/5/1941',
+      pob: 'Tokyo, Japan',
+    };
+    const res = await request(app).get('/api/v1/authors/1').send(expected);
+
+    expect(res.body).toEqual(expected);
+  });
 });
