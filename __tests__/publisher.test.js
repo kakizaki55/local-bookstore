@@ -2,7 +2,6 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-const publishers = require('../lib/controllers/publishers');
 const Publisher = require('../lib/models/Publisher');
 
 describe('local-bookstore routes', () => {
@@ -35,9 +34,10 @@ describe('local-bookstore routes', () => {
   });
 
   it('gets publisher by ID', async () => {
-    
     const expected = await Publisher.findById(1);
-    const response = await request(app).get(`/api/v1/publishers/${expected.id}`);
-    expect(response.body).toEqual(expected)
-  })
+    const response = await request(app).get(
+      `/api/v1/publishers/${expected.id}`
+    );
+    expect(response.body).toEqual(expected);
+  });
 });
