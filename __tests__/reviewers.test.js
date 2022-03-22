@@ -58,4 +58,13 @@ describe('local-bookstore-backend routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('updates the reviewer by id', async () => {
+    const expected = {
+      name: 'Minoka',
+      company: 'Grump Dude Magazine',
+    };
+    const res = await request(app).patch('/api/v1/reviewers/2').send(expected);
+    expect(res.body).toEqual({ ...expected, id: expect.any(String) });
+  });
 });
