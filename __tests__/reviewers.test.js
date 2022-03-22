@@ -4,7 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const Reviewer = require('../lib/models/Reviewer');
 
-describe.skip('local-bookstore-backend routes', () => {
+describe('local-bookstore-backend routes', () => {
   beforeEach(() => {
     return setup(pool);
   });

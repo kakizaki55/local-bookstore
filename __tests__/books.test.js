@@ -22,4 +22,23 @@ describe('local-bookstore-backend routes', () => {
     const response = await request(app).post('/api/v1/books').send(expected);
     expect(response.body).toEqual(expected);
   });
+  it('gets a list of all the books', async () => {
+    const expected = [
+      {
+        id: expect.any(String),
+        title: 'Zachary Mami',
+        publisher: '1',
+        released: 2003,
+      },
+      { id: expect.any(String), title: 'Dog', publisher: '1', released: 2006 },
+      {
+        id: expect.any(String),
+        title: 'War and Piece',
+        publisher: '1',
+        released: 1960,
+      },
+    ];
+    const response = await request(app).get('/api/v1/books');
+    expect(response.body).toEqual(expected);
+  });
 });
