@@ -15,10 +15,10 @@ INSERT INTO
 VALUES
     (
         'hitRecords',
-        'portland',
+        'Portland',
         'OR',
-        'United State'
-    )
+        'United States'
+    );
 
 CREATE TABLE authors (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
