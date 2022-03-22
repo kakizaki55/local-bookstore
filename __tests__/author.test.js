@@ -23,4 +23,30 @@ describe('local-bookstore-backend routes', () => {
 
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('gets list of authors', async () => {
+    const expected = [
+      {
+        id: '1',
+        name: 'Hayao Miyazaki',
+        dob: '1/5/1941',
+        pob: 'Tokyo, Japan',
+      },
+      {
+        id: '2',
+        name: 'George Orwell',
+        dob: '1/25/1950',
+        pob: 'Motihari, India',
+      },
+      {
+        id: '3',
+        name: 'J.R.R Tolkien',
+        dob: '1/3/1892',
+        pob: 'Bloemfontein, South Africa',
+      },
+    ];
+    const res = await request(app).get('/api/v1/authors').send(expected);
+
+    expect(res.body).toEqual(expected);
+  });
 });
