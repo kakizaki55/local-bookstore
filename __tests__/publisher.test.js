@@ -27,9 +27,17 @@ describe('local-bookstore routes', () => {
 
     expect(body).toEqual({ id: expect.any(String), ...expected });
   });
+
   it('gets all publishers from data base', async () => {
     const expected = await Publisher.findAll();
     const response = await request(app).get('/api/v1/publishers');
     expect(response.body).toEqual(expected);
   });
+
+  it('gets publisher by ID', async () => {
+    
+    const expected = await Publisher.findById(1);
+    const response = await request(app).get(`/api/v1/publishers/${expected.id}`);
+    expect(response.body).toEqual(expected)
+  })
 });
