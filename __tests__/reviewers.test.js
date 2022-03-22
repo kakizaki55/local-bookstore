@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Reviewer = require('../lib/models/Reviewer');
 
 describe('local-bookstore-backend routes', () => {
   beforeEach(() => {
@@ -66,5 +67,11 @@ describe('local-bookstore-backend routes', () => {
     };
     const res = await request(app).patch('/api/v1/reviewers/2').send(expected);
     expect(res.body).toEqual({ ...expected, id: expect.any(String) });
+  });
+
+  it('deletes a reviewer by ID', async () => {
+    const expected = await Reviewer.findById(1);
+    const res = await request(app).delete(`/api/v1/reviewers/${expected.id}`);
+    expect(res.body).toEqual(expected);
   });
 });
