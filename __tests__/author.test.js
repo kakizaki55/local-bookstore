@@ -15,15 +15,12 @@ describe('local-bookstore-backend routes', () => {
   it('allows user to create an author entry', async () => {
     const expected = {
       name: 'George Orwell',
-      dob: '1950-01-25',
-      pob: 'Motihari, India'
+      dob: '1/25/1950',
+      pob: 'Motihari, India',
     };
 
-    const res = await request(app)
-      .post('/api/v1/authors')
-      .send(expected);
+    const res = await request(app).post('/api/v1/authors').send(expected);
 
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
-
 });

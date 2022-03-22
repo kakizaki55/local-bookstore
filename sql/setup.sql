@@ -12,6 +12,6 @@ CREATE TABLE authors (
 INSERT INTO
     authors (name, dob, pob)
 VALUES
-    ('Hayao Miyazaki','1941-01-05','Tokyo, Japan'),
-    ('George Orwell','1950-01-25','Motihari, India'),
-    ('J.R.R Tolkien','1892-01-03','Bloemfontein, South Africa');
+    ('Hayao Miyazaki','1/5/1941','Tokyo, Japan'),
+    ('George Orwell','1/25/1950','Motihari, India'),
+    ('J.R.R Tolkien','1/3/1892','Bloemfontein, South Africa');
