@@ -22,4 +22,28 @@ describe('local-bookstore-backend routes', () => {
 
     expect(res.body).toEqual({ id: expect.any(String), ...expected });
   });
+
+  it('gets a list of reviewers', async () => {
+    const expected = [
+      {
+        id: '1',
+        name: 'John Smith',
+        company: 'Rude Reviews Inc.',
+      },
+      {
+        id: '2',
+        name: 'Ryssa Mami',
+        company: 'Good Opinions Co.',
+      },
+      {
+        id: '3',
+        name: 'Zachary',
+        company: 'Grumpy Dude Magazine',
+      },
+    ];
+
+    const res = await request(app).get('/api/v1/reviewers').send(expected);
+
+    expect(res.body).toEqual(expected);
+  });
 });
