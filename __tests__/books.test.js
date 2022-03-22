@@ -41,4 +41,16 @@ describe('local-bookstore-backend routes', () => {
     const response = await request(app).get('/api/v1/books');
     expect(response.body).toEqual(expected);
   });
+
+  it('gets a book by its id', async () => {
+    const expected = {
+      id: expect.any(String),
+      title: 'Zachary Mami',
+      publisher: '1',
+      released: 2003,
+    };
+
+    const response = await request(app).get('/api/v1/books/1');
+    expect(response.body).toEqual(expected);
+  });
 });
