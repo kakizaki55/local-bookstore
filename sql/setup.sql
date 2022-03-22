@@ -1,6 +1,12 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
-DROP TABLE IF EXISTS publishers, authors, reviewers, books;
+DROP TABLE IF EXISTS publishers CASCADE;
+
+DROP TABLE IF EXISTS books CASCADE;
+
+DROP TABLE IF EXISTS reviewers CASCADE;
+
+DROP TABLE IF EXISTS authors CASCADE;
 
 CREATE TABLE publishers (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -30,9 +36,13 @@ CREATE TABLE authors (
 INSERT INTO
     authors (name, dob, pob)
 VALUES
-    ('Hayao Miyazaki','1/5/1941','Tokyo, Japan'),
-    ('George Orwell','1/25/1950','Motihari, India'),
-    ('J.R.R Tolkien','1/3/1892','Bloemfontein, South Africa');
+    ('Hayao Miyazaki', '1/5/1941', 'Tokyo, Japan'),
+    ('George Orwell', '1/25/1950', 'Motihari, India'),
+    (
+        'J.R.R Tolkien',
+        '1/3/1892',
+        'Bloemfontein, South Africa'
+    );
 
 CREATE TABLE reviewers (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -50,13 +60,14 @@ VALUES
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT NOT NULL,
-    publisher_id BIGINT REFERENCES publishers (id),
-    release INT NOT NULL
+    released INT NOT NULL,
+    publisher_id BIGINT NOT NULL,
+    FOREIGN KEY (publisher_id) REFERENCES publishers (id)
 );
 
-INSERT INTO 
-    books (title, publisher_id, release)
-VALUES 
+INSERT INTO
+    books (title, publisher_id, released)
+VALUES
     ('Zachary Mami', 1, 2003),
-    ('Dog', 2, 2006),
-    ('War and Piece', 3, 1960);
+    ('Dog', 1, 2006),
+    ('War and Piece', 1, 1960);

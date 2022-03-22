@@ -14,6 +14,7 @@ describe('local-bookstore-backend routes', () => {
 
   it('should create a book', async () => {
     const expected = {
+      id: expect.any(String),
       title: 'Cat',
       publisher: '1',
       released: 2004,
