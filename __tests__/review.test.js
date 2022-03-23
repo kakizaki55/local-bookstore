@@ -15,10 +15,9 @@ describe('local-bookstore-backend routes', () => {
   it('creates a new review with correct book id and title', async () => {
     const expected = {
       id: expect.any(String),
-      rating: '5',
+      rating: 5,
       review: 'Great read',
       bookId: '1',
-      bookTitle: expect.any(String),
     };
     const response = await request(app).post('/api/v1/reviews').send(expected);
     expect(response.body).toEqual(expected);

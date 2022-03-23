@@ -95,13 +95,11 @@ CREATE TABLE reviews (
     rating INT NOT NULL,
     review TEXT NOT NULL,
     book_id BIGINT NOT NULL,
-    book_title TEXT NOT NULL,
-    FOREIGN KEY (book_id) REFERENCES books (id),
-    FOREIGN KEY (book_title) REFERENCES books (title)
+    FOREIGN KEY (book_id) REFERENCES books (id)
 );
 
 INSERT INTO
-    reviews (rating, review, book_id, book_title)
+    reviews (rating, review, book_id)
 VALUES
-    (5, 'super awesome movie jk its a book', 2, 'Dog'),
-    (1, 'not a fan', 1, 'Zachary Mami');
+    (5, 'super awesome movie jk its a book', 2),
+    (1, 'not a fan', 1);
