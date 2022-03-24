@@ -48,13 +48,13 @@ describe('local-bookstore-backend routes', () => {
       title: 'Zachary Mami',
       released: 2003,
       publisher: { id: '1', name: 'hitRecords' },
-      authors: [{ id: '1', name: 'Hayao Miyazaki' }],
-      reviews: [
+      author: [{ id: '1', name: 'Hayao Miyazaki' }],
+      review: [
         {
-          id: '1',
-          rating: '5',
-          review: 'super awesome movie jk its a book',
-          reviewer: { id: '1', name: 'John Smith' },
+          id: '2',
+          rating: 1,
+          reviews: 'not a fan',
+          reviewer: { id: '2', name: 'Ryssa Mami' },
         },
       ],
     };
