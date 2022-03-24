@@ -86,7 +86,7 @@ CREATE TABLE authors_books (
 INSERT INTO
     authors_books (author_id, book_id)
 VALUES
-    (1, 2),
+    (1, 1),
     (2, 2),
     (1, 3);
 
