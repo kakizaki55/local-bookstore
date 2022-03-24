@@ -62,7 +62,8 @@ INSERT INTO
 VALUES
     ('John Smith', 'Rude Reviews Inc.'),
     ('Ryssa Mami', 'Good Opinions Co.'),
-    ('Zachary', 'Grumpy Dude Magazine');
+    ('Zachary', 'Grumpy Dude Magazine'),
+    ('Zachary thats going to be deleted', 'GDM');
 
 --creats a table for books
 CREATE TABLE books (
