@@ -41,6 +41,11 @@ describe('local-bookstore-backend routes', () => {
         name: 'Zachary',
         company: 'Grumpy Dude Magazine',
       },
+      {
+        id: '4',
+        name: 'Zachary thats going to be deleted',
+        company: 'GDM',
+      },
     ];
 
     const res = await request(app).get('/api/v1/reviewers').send(expected);
@@ -53,6 +58,15 @@ describe('local-bookstore-backend routes', () => {
       id: '2',
       name: 'Ryssa Mami',
       company: 'Good Opinions Co.',
+      reviews: [
+        {
+          id: expect.any(String),
+          rating: expect.any(Number),
+          review: expect.any(String),
+          book_id: expect.any(String),
+          book_title: expect.any(String),
+        },
+      ],
     };
 
     const res = await request(app).get('/api/v1/reviewers/2').send(expected);
@@ -69,9 +83,14 @@ describe('local-bookstore-backend routes', () => {
     expect(res.body).toEqual({ ...expected, id: expect.any(String) });
   });
 
-  it('deletes a reviewer by ID', async () => {
-    const expected = await Reviewer.findById(1);
+  it('deletes a reviewer by IDs', async () => {
+    const expected = await Reviewer.findById(4);
     const res = await request(app).delete(`/api/v1/reviewers/${expected.id}`);
     expect(res.body).toEqual(expected);
+  });
+  it('wont deletes a reviewer by IDs if there are reviews', async () => {
+    const expected = await Reviewer.findById(1);
+    const res = await request(app).delete(`/api/v1/reviewers/${expected.id}`);
+    expect(res.body).toEqual({});
   });
 });

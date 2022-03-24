@@ -57,6 +57,7 @@ describe('local-bookstore-backend routes', () => {
       name: 'Hayao Miyazaki',
       dob: '1/5/1941',
       pob: 'Tokyo, Japan',
+      books: [{ id: '1', title: 'Zachary Mami', released: 2003 }],
     };
 
     const res = await request(app).get('/api/v1/authors/1').send(expected);
