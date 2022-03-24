@@ -48,11 +48,20 @@ describe('local-bookstore-backend routes', () => {
     expect(res.body).toEqual(expected);
   });
 
-  it('gets a reviewer by id', async () => {
+  it.only('gets a reviewer by id', async () => {
     const expected = {
       id: '2',
       name: 'Ryssa Mami',
       company: 'Good Opinions Co.',
+      reviews: [
+        {
+          id: expect.any(String),
+          rating: expect.any(Number),
+          review: expect.any(String),
+          book_id: expect.any(String),
+          book_title: expect.any(String),
+        },
+      ],
     };
 
     const res = await request(app).get('/api/v1/reviewers/2').send(expected);
