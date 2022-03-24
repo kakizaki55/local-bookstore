@@ -69,7 +69,7 @@ describe('local-bookstore-backend routes', () => {
     expect(res.body).toEqual({ ...expected, id: expect.any(String) });
   });
 
-  it('deletes a reviewer by ID', async () => {
+  it('deletes a reviewer by IDs', async () => {
     const expected = await Reviewer.findById(1);
     const res = await request(app).delete(`/api/v1/reviewers/${expected.id}`);
     expect(res.body).toEqual(expected);

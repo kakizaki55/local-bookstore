@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS authors_books CASCADE;
 
 DROP TABLE IF EXISTS reviews CASCADE;
 
+-- create a table for publishers
 CREATE TABLE publishers (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
@@ -30,6 +31,7 @@ VALUES
         'United States'
     );
 
+--creates a table for authors 
 CREATE TABLE authors (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
@@ -48,6 +50,7 @@ VALUES
         'Bloemfontein, South Africa'
     );
 
+-- creates a table for reviewers
 CREATE TABLE reviewers (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
@@ -61,6 +64,7 @@ VALUES
     ('Ryssa Mami', 'Good Opinions Co.'),
     ('Zachary', 'Grumpy Dude Magazine');
 
+--creats a table for books
 CREATE TABLE books (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     title TEXT UNIQUE NOT NULL,
@@ -76,6 +80,7 @@ VALUES
     ('Dog', 1, 2006),
     ('War and Piece', 1, 1960);
 
+--creats a junction table for authors and books
 CREATE TABLE authors_books (
     author_id BIGINT NOT NULL,
     book_id BIGINT NOT NULL,
@@ -90,6 +95,7 @@ VALUES
     (2, 2),
     (1, 3);
 
+-- creats a table for reviews
 CREATE TABLE reviews (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     rating INT NOT NULL,
