@@ -46,8 +46,17 @@ describe('local-bookstore-backend routes', () => {
     const expected = {
       id: expect.any(String),
       title: 'Zachary Mami',
-      publisher: '1',
       released: 2003,
+      publisher: { id: '1', name: 'hitRecords' },
+      authors: [{ id: '1', name: 'Hayao Miyazaki' }],
+      reviews: [
+        {
+          id: '1',
+          rating: '5',
+          review: 'super awesome movie jk its a book',
+          reviewer: { id: '1', name: 'John Smith' },
+        },
+      ],
     };
 
     const response = await request(app).get('/api/v1/books/1');
