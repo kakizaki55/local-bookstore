@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Review = require('../lib/models/Review');
 
 describe('local-bookstore-backend routes', () => {
   beforeEach(() => {
@@ -44,5 +45,19 @@ describe('local-bookstore-backend routes', () => {
     ];
     const response = await request(app).get('/api/v1/reviews').send(expected);
     expect(response.body).toEqual(expected);
+  });
+
+  it('should be able to get the top 100 reviews', async () => {
+    for (let i = 1; i < 150; i++) {
+      await Review.insert({
+        rating: Math.floor(Math.random() * 6),
+        review: 'this book is trash',
+        bookId: '1',
+        reviewerId: '2',
+      });
+    }
+    const response = await request(app).get('/api/v1/reviews');
+    expect(response.body.length).toEqual(100);
+    expect(response.body[0].rating).toBeGreaterThan(response.body[99].rating);
   });
 });
